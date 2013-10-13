@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="Rock" tilewidth="16" tileheight="16">
+  <image source="Rock.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk7sNwkAQBW2JlC7MH3fh1F2YP+6ClC5I6YKULkjpgUe+wWh1d9GONIm169WT3lVVEAR/GjmTc7mQS7mSa7mRW9lmvN+BmR7MeHMM4N8jmPHmuIG9O5jx5niAvSeY8eZ4gb03mPHm+IA90i1vjkkNFhPxNb41Be9PjVtdwfutcWvQt53cy4M8ypM8y4u81qxbJEfvzEq6RXKMzvvkjVjdSgV5I1a3UkHeiNWtVOTsFiFnt4IgCEryA2dVIm0=
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="Object Layer 1" width="32" height="32">
+  <object name="Player" type="Player" x="105" y="184" width="37" height="28">
+   <properties>
+    <property name="someprop" value="0.1"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
