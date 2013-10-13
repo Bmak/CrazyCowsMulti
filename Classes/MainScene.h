@@ -1,5 +1,5 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __MAIN_SCENE_H__
+#define __MAIN_SCENE_H__
 
 #include "cocos2d.h"
 
@@ -7,11 +7,11 @@
 
 using namespace cocos2d;
 
-class HelloWorld : public cocos2d::CCLayerColor
+class MainScene : public cocos2d::CCLayerColor
 {
 public:
-	HelloWorld();
-	~HelloWorld();
+	MainScene();
+	~MainScene();
 
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, 
     // instead of returning 'id' in cocos2d-iphone
@@ -35,7 +35,7 @@ public:
 	void ccTouchEnded(CCTouch *touch, CCEvent *event);
 
 	// implement the "static node()" method manually
-	CREATE_FUNC(HelloWorld);
+	CREATE_FUNC(MainScene);
     
 protected:
 	CCTMXTiledMap * _testmap;
@@ -56,4 +56,4 @@ protected:
 
 };
 
-#endif  // __HELLOWORLD_SCENE_H__
+#endif  // __MAIN_SCENE_H__

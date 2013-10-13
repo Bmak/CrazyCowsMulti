@@ -1,11 +1,11 @@
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 #include "SimpleAudioEngine.h"
 
 #include "cocos2d.h"
 
 using namespace cocos2d;
 
-HelloWorld::~HelloWorld() {
+MainScene::~MainScene() {
 	if (_targets) {
 		_targets->release();
 		_targets = NULL;
@@ -20,11 +20,11 @@ HelloWorld::~HelloWorld() {
 	// virtual destructor will do this
 }
 
-HelloWorld::HelloWorld() :
+MainScene::MainScene() :
 		_targets(NULL), _projectiles(NULL), _projectilesDestroyed(0) {
 }
 
-CCScene* HelloWorld::scene() {
+CCScene* MainScene::scene() {
 	CCScene * scene = NULL;
 	do {
 		// 'scene' is an autorelease object
@@ -32,7 +32,7 @@ CCScene* HelloWorld::scene() {
 		CC_BREAK_IF(! scene);
 
 		// 'layer' is an autorelease object
-		HelloWorld *layer = HelloWorld::create();
+		MainScene *layer = MainScene::create();
 		CC_BREAK_IF(! layer);
 
 		// add layer as a child to scene
@@ -44,7 +44,7 @@ CCScene* HelloWorld::scene() {
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init() {
+bool MainScene::init() {
 	bool bRet = false;
 	do {
 		CC_BREAK_IF(! CCLayerColor::initWithColor( ccc4(255,255,255,255) ));
@@ -52,11 +52,12 @@ bool HelloWorld::init() {
 		// Create a "close" menu item with close icon, it's an auto release object.
 		CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png",
 				"CloseSelected.png", this,
-				menu_selector(HelloWorld::menuCloseCallback));
+				menu_selector(MainScene::menuCloseCallback));
 		CC_BREAK_IF(! pCloseItem);
 
 		// Place the menu item bottom-right conner.
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 		CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 		pCloseItem->setPosition(
@@ -110,12 +111,12 @@ bool HelloWorld::init() {
 	return bRet;
 }
 
-void HelloWorld::menuCloseCallback(CCObject* pSender) {
+void MainScene::menuCloseCallback(CCObject* pSender) {
 	// "close" menu item clicked
 	CCDirector::sharedDirector()->end();
 }
 
-void HelloWorld::setViewPointCenter(CCPoint position) {
+void MainScene::setViewPointCenter(CCPoint position) {
 
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
@@ -130,16 +131,16 @@ void HelloWorld::setViewPointCenter(CCPoint position) {
 	this->setPosition(viewPoint);
 }
 
-void HelloWorld::registerWithTouchDispatcher() {
+void MainScene::registerWithTouchDispatcher() {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(
 			this, 0, true);
 }
 
-bool HelloWorld::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+bool MainScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
 	return true;
 }
 
-void HelloWorld::setPlayerPosition(CCPoint position)
+void MainScene::setPlayerPosition(CCPoint position)
 {
     CCPoint tileCoord = this->tileCoordForPosition(position);
     int tileGid = _meta->tileGIDAt(tileCoord);
@@ -157,7 +158,7 @@ void HelloWorld::setPlayerPosition(CCPoint position)
     _player->setPosition(position);
 }
 
-void HelloWorld::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+void MainScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
 	CCPoint touchLocation = touch->getLocationInView();
 	touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
 	touchLocation = this->convertToNodeSpace(touchLocation);
@@ -189,7 +190,7 @@ void HelloWorld::ccTouchEnded(CCTouch *touch, CCEvent *event) {
 	this->setViewPointCenter(_player->getPosition());
 }
 
-CCPoint HelloWorld::tileCoordForPosition(CCPoint position)
+CCPoint MainScene::tileCoordForPosition(CCPoint position)
 {
     int x = position.x / _tileMap->getTileSize().width;
     int y = ((_tileMap->getMapSize().height * _tileMap->getTileSize().height) - position.y)
