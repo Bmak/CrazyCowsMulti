@@ -100,7 +100,7 @@ bool HelloWorld::init() {
 		_player->setPosition(ccp(x,y));
 
 		this->addChild(_player);
-		//this->setViewPointCenter(_player->getPosition());
+		this->setViewPointCenter(_player->getPosition());
 
 		this->setTouchEnabled(true);
 
@@ -186,7 +186,7 @@ void HelloWorld::ccTouchEnded(CCTouch *touch, CCEvent *event) {
 		this->setPlayerPosition(playerPos);
 	}
 
-	//this->setViewPointCenter(_player->getPosition());
+	this->setViewPointCenter(_player->getPosition());
 }
 
 CCPoint HelloWorld::tileCoordForPosition(CCPoint position)

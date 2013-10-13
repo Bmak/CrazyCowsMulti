@@ -36,9 +36,12 @@
   </data>
  </layer>
  <objectgroup draworder="topdown" name="Resp" width="48" height="32">
-  <object name="SpawnPoint" x="438" y="394"/>
+  <object name="SpawnPoint" x="430" y="390"/>
  </objectgroup>
  <layer name="meta" width="48" height="32">
+  <properties>
+   <property name="Collidable" value=""/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1VEOgCAMA1C8/ym9iR+GxOwLabeypC/xc6MouDHMzMysi/t6n+pa1Fwbza7YA7pmzF65B9Y7Z/ZlrL9am9H7b47dupX8mTL/NRXnn31vuzolP/otlBjzS4Uxe2aNYnah81M5dxn5v/0qxazxDKjvJKJ7fjOzXQ8+dlaF
   </data>
