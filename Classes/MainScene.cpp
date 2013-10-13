@@ -74,6 +74,7 @@ bool MainScene::init() {
 
 
 		_tileMap = new CCTMXTiledMap();
+        _tileMap->setPosition(origin);
 		_tileMap->initWithTMXFile("level.tmx");
 		_trees = _tileMap->layerNamed("trees");
 		_rock = _tileMap->layerNamed("rock");
