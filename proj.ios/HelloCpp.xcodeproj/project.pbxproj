@@ -201,6 +201,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2C58E937180D7BD600CABBC6 /* CCLayerPanZoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C58E935180D7BD600CABBC6 /* CCLayerPanZoom.cpp */; };
 		2C9CDA29180B20DA00948ED1 /* app.config.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C9CDA1D180B20DA00948ED1 /* app.config.txt */; };
 		2C9CDA2A180B20DA00948ED1 /* app.icf in Resources */ = {isa = PBXBuildFile; fileRef = 2C9CDA1E180B20DA00948ED1 /* app.icf */; };
 		2C9CDA2B180B20DA00948ED1 /* background-music-aac.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C9CDA1F180B20DA00948ED1 /* background-music-aac.wav */; };
@@ -647,6 +648,8 @@
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2C58E935180D7BD600CABBC6 /* CCLayerPanZoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCLayerPanZoom.cpp; path = ../Classes/CCLayerPanZoom.cpp; sourceTree = "<group>"; };
+		2C58E936180D7BD600CABBC6 /* CCLayerPanZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCLayerPanZoom.h; path = ../Classes/CCLayerPanZoom.h; sourceTree = "<group>"; };
 		2C9CDA1D180B20DA00948ED1 /* app.config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = app.config.txt; sourceTree = "<group>"; };
 		2C9CDA1E180B20DA00948ED1 /* app.icf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = app.icf; sourceTree = "<group>"; };
 		2C9CDA1F180B20DA00948ED1 /* background-music-aac.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "background-music-aac.wav"; sourceTree = "<group>"; };
@@ -1193,6 +1196,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2C58E935180D7BD600CABBC6 /* CCLayerPanZoom.cpp */,
+				2C58E936180D7BD600CABBC6 /* CCLayerPanZoom.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* MainScene.cpp */,
@@ -1687,6 +1692,7 @@
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
 				15A3D9A91682F7F9002FB0C5 /* cpPolyShape.c in Sources */,
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
+				2C58E937180D7BD600CABBC6 /* CCLayerPanZoom.cpp in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				15A3D9AC1682F7F9002FB0C5 /* cpSpaceComponent.c in Sources */,
 				15A3D9AD1682F7F9002FB0C5 /* cpSpaceHash.c in Sources */,

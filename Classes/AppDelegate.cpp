@@ -26,7 +26,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     {
         searchPaths.push_back("hd");
         searchPaths.push_back("sd");
-        pDirector->setContentScaleFactor(960.0f/designSize.height);
+        pDirector->setContentScaleFactor(960.0f/designSize.width);
     }
     else
     {

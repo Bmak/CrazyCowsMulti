@@ -20,3 +20,11 @@ xcuserdata
 
 #libs
 #ninjaBall/libs/
+
+#linux
+proj.linux/bin
+proj.linux/obj
+
+#android
+proj.android/obj
+proj.android/bin
