@@ -2,12 +2,14 @@
 #define __MAIN_SCENE_H__
 
 #include "cocos2d.h"
+#include "CCLayerPanZoom.h"
 
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 
-class MainScene : public cocos2d::CCLayerColor
+
+class MainScene : public CCLayerPanZoom
 {
 public:
 	MainScene();
@@ -25,23 +27,21 @@ public:
     
 	void setViewPointCenter(CCPoint position);
 
-
-	void registerWithTouchDispatcher();
-
 	void setPlayerPosition(CCPoint position);
 
-	bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+	/*
+	void ccTouchesBegan(CCSet * pTouches,CCEvent * pEvent);
 
-	void ccTouchEnded(CCTouch *touch, CCEvent *event);
+	void ccTouchesMoved(CCSet *touches, CCEvent *pEvent);
+
+	void ccTouchesEnded(CCSet * pTouches,CCEvent * pEvent);
+	 */
 
 	// implement the "static node()" method manually
 	CREATE_FUNC(MainScene);
     
 protected:
 	CCTMXTiledMap * _testmap;
-	cocos2d::CCArray *_targets;
-	cocos2d::CCArray *_projectiles;
-	int _projectilesDestroyed;
 
 	CCTMXTiledMap * _tileMap;
 	CCTMXLayer * _trees;
@@ -53,6 +53,12 @@ protected:
 	CCSprite *_player;
 
 	CCPoint tileCoordForPosition(CCPoint position);
+
+	bool _multiTouchState;
+
+	void playerMove(CCTouch *touch);
+
+	CCPoint * _currTouchLocation;
 
 };
 

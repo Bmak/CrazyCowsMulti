@@ -6,22 +6,12 @@
 using namespace cocos2d;
 
 MainScene::~MainScene() {
-	if (_targets) {
-		_targets->release();
-		_targets = NULL;
-	}
-
-	if (_projectiles) {
-		_projectiles->release();
-		_projectiles = NULL;
-	}
 
 	// cpp don't need to call super dealloc
 	// virtual destructor will do this
 }
 
-MainScene::MainScene() :
-		_targets(NULL), _projectiles(NULL), _projectilesDestroyed(0) {
+MainScene::MainScene() {
 }
 
 CCScene* MainScene::scene() {
@@ -47,7 +37,8 @@ CCScene* MainScene::scene() {
 bool MainScene::init() {
 	bool bRet = false;
 	do {
-		CC_BREAK_IF(! CCLayerColor::initWithColor( ccc4(255,255,255,255) ));
+		//CC_BREAK_IF(! CCLayerColor::initWithColor( ccc4(255,255,255,255) ));
+		CC_BREAK_IF(!CCLayerPanZoom::init());
 
 		// Create a "close" menu item with close icon, it's an auto release object.
 		CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png",
@@ -57,7 +48,7 @@ bool MainScene::init() {
 
 		// Place the menu item bottom-right conner.
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+        //CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 		CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 		pCloseItem->setPosition(
@@ -70,11 +61,11 @@ bool MainScene::init() {
 		CC_BREAK_IF(! pMenu);
 
 		// Add the menu to HelloWorld layer as a child layer.
-		this->addChild(pMenu, 1);
+		this->addChild(pMenu, 1,0);
 
 
 		_tileMap = new CCTMXTiledMap();
-        _tileMap->setPosition(origin);
+        //_tileMap->setPosition(origin);
 		_tileMap->initWithTMXFile("level.tmx");
 		_trees = _tileMap->layerNamed("trees");
 		_rock = _tileMap->layerNamed("rock");
@@ -83,7 +74,7 @@ bool MainScene::init() {
 		_meta = _tileMap->layerNamed("meta");
 		//_meta->setVisible(false);
 
-		this->addChild(_tileMap);
+		this->addChild(_tileMap, 0,1);
 
 		CCTMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Resp");
 
@@ -101,10 +92,12 @@ bool MainScene::init() {
 		_player->initWithFile("Player.png");
 		_player->setPosition(ccp(x,y));
 
-		this->addChild(_player);
-		this->setViewPointCenter(_player->getPosition());
+		this->addChild(_player, 1,1);
+		//this->setViewPointCenter(_player->getPosition());
 
 		this->setTouchEnabled(true);
+
+		//CCLog("mode %d", this->getTouchMode());
 
 		bRet = true;
 	} while (0);
@@ -131,16 +124,36 @@ void MainScene::setViewPointCenter(CCPoint position) {
 	CCPoint viewPoint = ccpSub(centerOfView, actualPosition);
 	this->setPosition(viewPoint);
 }
-
-void MainScene::registerWithTouchDispatcher() {
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(
-			this, 0, true);
-}
-
+/*
 bool MainScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+	//_currTouchLocation = *touch->getLocationInView();
+	CCLog("touch begun!!!!");
 	return true;
 }
+*/
 
+/*
+void MainScene::ccTouchesBegan(CCSet * pTouches,CCEvent * pEvent) {
+	CCLog("multitouch begun**");
+	_multiTouchState = false;
+}
+
+void MainScene::ccTouchesMoved(CCSet *touches, CCEvent *pEvent) {
+	CCLog("touches moved*");
+	if (touches->count() > 1) { _multiTouchState = true; }
+}
+
+void MainScene::ccTouchesEnded(CCSet * pTouches,CCEvent * pEvent) {
+	CCLog("multitouch ended****");
+	//CCLog("wtf %d", _multiTouchState);
+	if (pTouches->count() == 0) { return; }
+	if (_multiTouchState == false) {
+		this->playerMove((CCTouch*) pTouches->anyObject());
+	} else {
+
+	}
+}
+*/
 void MainScene::setPlayerPosition(CCPoint position)
 {
     CCPoint tileCoord = this->tileCoordForPosition(position);
@@ -159,7 +172,7 @@ void MainScene::setPlayerPosition(CCPoint position)
     _player->setPosition(position);
 }
 
-void MainScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+void MainScene::playerMove(CCTouch *touch) {
 	CCPoint touchLocation = touch->getLocationInView();
 	touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
 	touchLocation = this->convertToNodeSpace(touchLocation);
@@ -188,7 +201,7 @@ void MainScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
 		this->setPlayerPosition(playerPos);
 	}
 
-	this->setViewPointCenter(_player->getPosition());
+	//this->setViewPointCenter(_player->getPosition());
 }
 
 CCPoint MainScene::tileCoordForPosition(CCPoint position)

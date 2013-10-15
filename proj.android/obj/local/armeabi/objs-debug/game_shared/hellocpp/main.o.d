@@ -205,7 +205,7 @@ obj/local/armeabi/objs-debug/game_shared/hellocpp/main.o: \
  /home/probigi/development/cocos2d-x/cocos2d-x-2.2.0/samples/Cpp/SimpleGame/proj.android/../../../../cocos2dx/support/component/CCComponentContainer.h \
  /home/probigi/development/cocos2d-x/cocos2d-x-2.2.0/samples/Cpp/SimpleGame/proj.android/../../../../cocos2dx/platform/android/jni/JniHelper.h \
  /home/probigi/lib/android_ndk/android-ndk-r9/platforms/android-14/arch-arm/usr/include/jni.h \
- jni/../../Classes/HelloWorldScene.h \
+ jni/../../Classes/MainScene.h jni/../../Classes/CCLayerPanZoom.h \
  /home/probigi/development/cocos2d-x/cocos2d-x-2.2.0/samples/Cpp/SimpleGame/proj.android/../../../../CocosDenshion/android/../include/SimpleAudioEngine.h \
  /home/probigi/development/cocos2d-x/cocos2d-x-2.2.0/samples/Cpp/SimpleGame/proj.android/../../../../CocosDenshion/android/../include/Export.h
 
@@ -621,7 +621,9 @@ jni/../../Classes/AppDelegate.h:
 
 /home/probigi/lib/android_ndk/android-ndk-r9/platforms/android-14/arch-arm/usr/include/jni.h:
 
-jni/../../Classes/HelloWorldScene.h:
+jni/../../Classes/MainScene.h:
+
+jni/../../Classes/CCLayerPanZoom.h:
 
 /home/probigi/development/cocos2d-x/cocos2d-x-2.2.0/samples/Cpp/SimpleGame/proj.android/../../../../CocosDenshion/android/../include/SimpleAudioEngine.h:
 
